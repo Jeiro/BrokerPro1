@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Clock, Filter, ArrowUpRight, ArrowDownRight, ArrowLeftRight, Search, Download } from 'lucide-react';
 import { DataContext } from '../../context/DataContext';
 import StatusBadge from '../shared/StatusBadge';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 const TransactionHistory = () => {
   const { deposits, withdrawals, trades } = useContext(DataContext);

@@ -5,7 +5,6 @@ import { useAuth } from '../../hooks/useAuth';
 import { DataContext } from '../../context/DataContext';
 import { MIN_WITHDRAWAL, FEES } from '../../utils/constants';
 import { validateAmount, validateWalletAddress } from '../../utils/validation';
-import { motion } from 'framer-motion';
 
 const Withdraw = () => {
   const { currentUser } = useAuth();

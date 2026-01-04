@@ -3,8 +3,6 @@ import { useAuth } from '../../hooks/useAuth';
 import { User, Bell, Shield, Mail, Phone, Save } from 'lucide-react';
 import toast from 'react-hot-toast';
 
-import { motion } from 'framer-motion';
-
 const Settings = () => {
     const { currentUser, updateProfile } = useAuth();
     const [loading, setLoading] = useState(false);

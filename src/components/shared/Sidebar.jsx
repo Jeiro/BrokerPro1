@@ -18,7 +18,7 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
 import { useChat } from '../../context/ChatContext';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
   const { currentUser, logout, isAdmin } = useAuth();

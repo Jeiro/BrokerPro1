@@ -4,12 +4,10 @@ import { useChat } from '../../context/ChatContext';
 import { useAuth } from '../../context/AuthContext';
 
 const LiveChat = () => {
-  const { activeChat, sendMessage, markAsRead, userUnreadCount, refreshChats } = useChat();
+  const { activeChat, sendMessage, markAsRead, userUnreadCount } = useChat();
   const { currentUser } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState('');
-  const messagesEndRef = useRef(null);
-  const [isTyping, setIsTyping] = useState(false);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });

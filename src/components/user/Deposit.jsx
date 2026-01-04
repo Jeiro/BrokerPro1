@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowDownRight, Copy, Check, Upload, AlertCircle, ShieldCheck, Wallet } from 'lucide-react';
-import { useAuth } from '../../hooks/useAuth';
 import { DataContext } from '../../context/DataContext';
 import { COMPANY_WALLETS, CURRENCIES, MIN_DEPOSIT } from '../../utils/constants';
 import { validateAmount, validateTransactionHash } from '../../utils/validation';

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, useCallback } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TrendingUp, TrendingDown, AlertCircle, Check, RefreshCw, Activity, DollarSign, Wallet } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
