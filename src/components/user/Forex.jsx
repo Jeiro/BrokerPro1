@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { motion } from 'framer-motion';
 import { TrendingUp, TrendingDown, DollarSign, Activity, RefreshCw } from 'lucide-react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { DataContext } from '../../context/DataContext';
@@ -7,7 +6,7 @@ import { ForexService } from '../../services/forexService';
 import { FOREX_PAIRS } from '../../utils/constants';
 
 const Forex = () => {
-    const { createTrade, trades } = useContext(DataContext);
+    const { createTrade } = useContext(DataContext);
     const [rates, setRates] = useState([]);
     const [selectedPair, setSelectedPair] = useState('EUR/USD');
     const [amount, setAmount] = useState('');
@@ -25,7 +24,7 @@ const Forex = () => {
 
         // Live updates
         const unsubscribe = ForexService.subscribeToRates((newRates) => {
-            setRates(prevRates => {
+            setRates(() => {
                 // Merge updates
                 return newRates;
             });

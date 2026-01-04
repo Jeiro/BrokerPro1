@@ -4,7 +4,6 @@ import { DataContext } from '../../context/DataContext';
 import { TRANSACTION_STATUS } from '../../utils/constants';
 import StatusBadge from '../shared/StatusBadge';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 
 const AdminDashboard = () => {
   const { deposits, withdrawals, trades, users } = useContext(DataContext);

@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import { motion } from 'framer-motion';
 import { Upload, CheckCircle, XCircle, Clock, FileText, Shield } from 'lucide-react';
 import { DataContext } from '../../context/DataContext';
 import { AuthContext } from '../../context/AuthContext';

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TrendingUp, TrendingDown, AlertCircle, Check, RefreshCw, Activity, DollarSign, Wallet } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
@@ -9,10 +9,9 @@ import { getCryptoPairPrice } from '../../services/cryptoService';
 import { getForexPairRate } from '../../services/forexService';
 import PriceChart from '../shared/PriceChart';
 import { getCryptoChartData } from '../../services/cryptoService';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 const Trade = () => {
-  const { currentUser } = useAuth();
   const { cryptoPrices, forexRates, loading: pricesLoading, refresh } = usePrices();
   const { createTrade } = useContext(DataContext);
   const navigate = useNavigate();
@@ -33,13 +32,16 @@ const Trade = () => {
 
   // Update price when pair changes
   useEffect(() => {
-    if (tradeType === 'crypto' && cryptoPrices.BTC) {
-      const price = getCryptoPairPrice(formData.pair, cryptoPrices);
-      setFormData(prev => ({ ...prev, price }));
-    } else if (tradeType === 'forex' && forexRates) {
-      const rate = getForexPairRate(formData.pair, forexRates);
-      setFormData(prev => ({ ...prev, price: rate }));
-    }
+    const updatePrice = () => {
+      if (tradeType === 'crypto' && cryptoPrices.BTC) {
+        const price = getCryptoPairPrice(formData.pair, cryptoPrices);
+        setFormData(prev => ({ ...prev, price }));
+      } else if (tradeType === 'forex' && forexRates) {
+        const rate = getForexPairRate(formData.pair, forexRates);
+        setFormData(prev => ({ ...prev, price: rate }));
+      }
+    };
+    updatePrice();
   }, [formData.pair, cryptoPrices, forexRates, tradeType]);
 
   // Fetch chart data when pair changes
@@ -53,10 +55,13 @@ const Trade = () => {
 
   // Calculate total when amount changes
   useEffect(() => {
-    if (formData.amount && formData.price) {
-      const total = parseFloat(formData.amount) * formData.price;
-      setFormData(prev => ({ ...prev, total }));
-    }
+    const updateTotal = () => {
+      if (formData.amount && formData.price) {
+        const total = parseFloat(formData.amount) * formData.price;
+        setFormData(prev => ({ ...prev, total }));
+      }
+    };
+    updateTotal();
   }, [formData.amount, formData.price]);
 
   const handleChange = (e) => {

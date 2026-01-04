@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Check, X, Search, FileText, Eye, Clock, Shield } from 'lucide-react';
 import { DataContext } from '../../context/DataContext';
 import { KYC_STATUS } from '../../utils/constants';

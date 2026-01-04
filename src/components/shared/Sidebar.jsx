@@ -48,11 +48,6 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
 
   const links = isAdmin() ? adminLinks : userLinks;
 
-  const sidebarVariants = {
-    open: { x: 0, opacity: 1 },
-    closed: { x: '-100%', opacity: 0 },
-  };
-
   return (
     <>
       {/* Mobile Overlay */}

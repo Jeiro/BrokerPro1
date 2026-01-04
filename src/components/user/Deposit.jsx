@@ -5,10 +5,9 @@ import { useAuth } from '../../hooks/useAuth';
 import { DataContext } from '../../context/DataContext';
 import { COMPANY_WALLETS, CURRENCIES, MIN_DEPOSIT } from '../../utils/constants';
 import { validateAmount, validateTransactionHash } from '../../utils/validation';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 const Deposit = () => {
-  const { currentUser } = useAuth();
   const { createDeposit } = useContext(DataContext);
   const navigate = useNavigate();
 

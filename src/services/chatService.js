@@ -1,28 +1,18 @@
 import { v4 as uuidv4 } from 'uuid';
 import { getCurrentUser } from '../utils/localStorage';
 
-const CHAT_STORAGE_KEY = 'broker_chats';
+// In-memory chat storage
+let chatMessages = {};
 
-// Helper to get all chats from storage
+// Helper to get all chats from memory
 const getChats = () => {
-    try {
-        const chats = localStorage.getItem(CHAT_STORAGE_KEY);
-        return chats ? JSON.parse(chats) : {};
-    } catch (error) {
-        console.error('Error reading chats from storage:', error);
-        return {};
-    }
+    return chatMessages;
 };
 
-// Helper to save chats to storage
+// Helper to save chats to memory
 const saveChats = (chats) => {
-    try {
-        localStorage.setItem(CHAT_STORAGE_KEY, JSON.stringify(chats));
-        return true;
-    } catch (error) {
-        console.error('Error saving chats to storage:', error);
-        return false;
-    }
+    chatMessages = chats;
+    return true;
 };
 
 export const chatService = {

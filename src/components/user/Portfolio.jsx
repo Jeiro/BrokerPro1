@@ -2,7 +2,6 @@ import React from 'react';
 import { Wallet, TrendingUp, PieChart, ArrowUpRight, ArrowDownRight, DollarSign } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
 import { usePrices } from '../../hooks/usePrices';
-import { motion } from 'framer-motion';
 
 const Portfolio = () => {
   const { currentUser } = useAuth();

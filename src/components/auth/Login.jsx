@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Lock, TrendingUp, AlertCircle, ArrowRight } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
 import { validateEmail } from '../../utils/validation';
-import { motion } from 'framer-motion';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -67,7 +66,7 @@ const Login = () => {
       } else {
         setErrors({ general: result.message });
       }
-    } catch (error) {
+    } catch {
       setErrors({ general: 'An unexpected error occurred' });
     } finally {
       setIsLoading(false);
@@ -83,58 +82,29 @@ const Login = () => {
         <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-[100px]"></div>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
-        className="max-w-md w-full relative z-10 px-4"
-      >
+      <div className="max-w-md w-full relative z-10 px-4">
         {/* Logo */}
         <div className="text-center mb-8">
-          <motion.div
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="flex justify-center mb-4"
-          >
+          <div className="flex justify-center mb-4">
             <div className="w-16 h-16 bg-gradient-to-tr from-primary-500 to-purple-500 rounded-2xl flex items-center justify-center shadow-lg shadow-primary-500/20">
               <TrendingUp className="w-8 h-8 text-white" />
             </div>
-          </motion.div>
-          <motion.h1
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="text-4xl font-bold text-white tracking-tight"
-          >
+          </div>
+          <h1 className="text-4xl font-bold text-white tracking-tight">
             BrokerPro
-          </motion.h1>
-          <motion.p
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="text-slate-400 mt-2"
-          >
+          </h1>
+          <p className="text-slate-400 mt-2">
             Welcome back! Sign in to continue.
-          </motion.p>
+          </p>
         </div>
 
         {/* Login Form */}
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="glass-card p-8 shadow-2xl shadow-black/50"
-        >
+        <div className="glass-card p-8 shadow-2xl shadow-black/50">
           {errors.general && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              className="mb-6 p-4 bg-red-500/10 border border-red-500/20 rounded-xl flex items-start space-x-3"
-            >
+            <div className="mb-6 p-4 bg-red-500/10 border border-red-500/20 rounded-xl flex items-start space-x-3">
               <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
               <p className="text-sm text-red-400 font-medium">{errors.general}</p>
-            </motion.div>
+            </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -220,8 +190,8 @@ const Login = () => {
               </Link>
             </p>
           </div>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </div>
   );
 };

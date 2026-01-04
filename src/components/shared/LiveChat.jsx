@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, X, Send, User, Headphones, Check, CheckCircle } from 'lucide-react';
 import { useChat } from '../../context/ChatContext';
 import { useAuth } from '../../context/AuthContext';
@@ -46,11 +45,7 @@ const LiveChat = () => {
   return (
     <>
       {/* Toggle Button */}
-      <motion.button
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
+      <button
         onClick={() => setIsOpen(true)}
         className={`fixed bottom-6 right-6 p-4 rounded-full shadow-lg z-50 transition-colors ${isOpen ? 'bg-gray-400 opacity-0 pointer-events-none' : 'bg-blue-600 text-white'
           }`}
@@ -63,17 +58,11 @@ const LiveChat = () => {
             </span>
           )}
         </div>
-      </motion.button>
+      </button>
 
       {/* Chat Window */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 100, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 100, scale: 0.9 }}
-            className="fixed bottom-6 right-6 w-96 max-w-[calc(100vw-3rem)] bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-50 flex flex-col h-[500px]"
-          >
+      {isOpen && (
+        <div className="fixed bottom-6 right-6 w-96 max-w-[calc(100vw-3rem)] bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-50 flex flex-col h-[500px]">
             {/* Header */}
             <div className="bg-gradient-to-r from-blue-600 to-indigo-700 p-4 flex justify-between items-center text-white shadow-md">
               <div className="flex items-center gap-3">
@@ -160,9 +149,8 @@ const LiveChat = () => {
                 <Send className="w-5 h-5 ml-0.5" />
               </button>
             </form>
-          </motion.div>
-        )}
-      </AnimatePresence>
+        </div>
+      )}
     </>
   );
 };

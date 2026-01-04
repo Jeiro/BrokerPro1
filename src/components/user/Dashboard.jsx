@@ -7,7 +7,6 @@ import { DataContext } from '../../context/DataContext';
 import StatusBadge from '../shared/StatusBadge';
 import PriceChart from '../shared/PriceChart';
 import { getCryptoChartData } from '../../services/cryptoService';
-import { motion } from 'framer-motion';
 
 const Dashboard = () => {
   const { currentUser } = useAuth();
@@ -51,25 +50,10 @@ const Dashboard = () => {
 
   const totalValue = calculateTotalValue();
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1 }
-  };
-
   return (
-    <motion.div
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      className="space-y-6"
-    >
+    <div className="space-y-6">
       {/* Welcome Section */}
-      <motion.div variants={itemVariants} className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold text-white">Welcome back, {currentUser?.fullName}!</h1>
           <p className="text-slate-400 mt-1">Here's your portfolio overview for today.</p>
@@ -84,10 +68,10 @@ const Dashboard = () => {
             <span>Trade</span>
           </Link>
         </div>
-      </motion.div>
+      </div>
 
       {/* Portfolio Summary Cards */}
-      <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {/* Total Portfolio Value */}
         <div className="glass-card p-6 relative overflow-hidden group">
           <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
@@ -164,10 +148,10 @@ const Dashboard = () => {
             ≈ ${currentUser?.balance.USDT?.toFixed(2) || '0.00'}
           </p>
         </div>
-      </motion.div>
+      </div>
 
       {/* Main Content Grid */}
-      <motion.div variants={itemVariants} className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Chart Section */}
         <div className="lg:col-span-2 glass-panel rounded-xl p-6">
           <div className="flex items-center justify-between mb-6">
@@ -249,10 +233,10 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Recent Transactions */}
-      <motion.div variants={itemVariants} className="glass-panel rounded-xl overflow-hidden">
+      <div className="glass-panel rounded-xl overflow-hidden">
         <div className="p-6 border-b border-slate-700/50 flex items-center justify-between">
           <h2 className="text-xl font-bold text-white">Recent Transactions</h2>
           <Link to="/history" className="text-primary-400 hover:text-primary-300 text-sm font-medium">
@@ -310,8 +294,8 @@ const Dashboard = () => {
             </table>
           </div>
         )}
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 };
 

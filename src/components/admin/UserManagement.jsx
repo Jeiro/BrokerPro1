@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import {
   Users,
   Search,

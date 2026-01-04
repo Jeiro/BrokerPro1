@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
 import { Toaster } from 'react-hot-toast';
+import { AnimatePresence } from 'framer-motion';
 
 // Auth Components
 import Login from './components/auth/Login';
